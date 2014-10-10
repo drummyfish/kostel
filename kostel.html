@@ -1,0 +1,30 @@
+<html>
+  <head>
+  </head>
+
+
+    <script>
+      function aaa()
+        {
+          document.form1.textarea.value += "a";
+        }
+
+      function bbb()
+        {
+          document.form1.textarea.value += "b";
+        }
+
+    </script>
+
+
+  <body>
+
+    <form name="form1">
+    <input id="tl1" type="button" value="tlacitko a" onclick="aaa();" />
+    <input id="tl2" type="button" value="tlacitko b" onclick="bbb();" />
+
+    <textarea name="textarea"></textarea>
+    </form>
+
+  </body>
+</html>
