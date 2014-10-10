@@ -13,7 +13,8 @@
     <script src="js/bootstrap.min.js"></script>
     <link href="css/keyboard.css" rel="stylesheet">
     <script src="js/jquery.keyboard.js"></script>
-
+	<script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+	<!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css"> -->
     <style>
 
       .helper_table
@@ -90,13 +91,35 @@
 
     <h1> Zpovědnice </h1>
 
-    <table style="width: 100%;">
+    <table style="width: 100%;" id="tabulka">
       <tr>
         <td>
 
           <table class="helper_table" style="display: inline; background-color: rgba(100,100,100,0.5)">
-          <tr> <td> <button onclick="sin_clicked(0);" type="button" class="btn btn-primary"> Nebudeš mít jiné bohy! </button> </td> <td id="sin_count_0"> 0 </td> </tr>
-          <tr> <td> <button onclick="sin_clicked(1);" type="button" class="btn btn-primary"> Nebudeš zneužívat mého jména! </button> </td> <td id="sin_count_1"> 0 </td> </tr>
+          <tr> <td> <button id="b1" onclick="sin_clicked(0);" type="button" class="btn btn-primary"> Nebudeš mít jiné bohy! </button> </td> <td id="sin_count_0"> 0 </td> </tr>
+		  <script>
+		$("#b1").on("click",function(){
+		//$(this).hide();
+		//alert('klik');
+		sin_clicked(0);
+		});
+		</script>
+		
+		
+		<script>
+		/*
+$(document).on("pagecreate","#tabulka",function(){
+  $("p,button,h1,#b1").on("tap",function(event){
+    //$("span.test").html("Tapped a " + event.target.nodeName + " element.");
+    //$("span.test2").html("Event triggered: " + event.type);
+	sin_clicked(0);
+	
+  });                       
+});*/
+</script>
+		
+		  
+          <tr> <td> <button touchstart="sin_clicked(1);" type="button" class="btn btn-primary"> Nebudeš zneužívat mého jména! </button> </td> <td id="sin_count_1"> 0 </td> </tr>
           <tr> <td> <button onclick="sin_clicked(2);" type="button" class="btn btn-primary"> Budeš zachovávat den odpočinku! </button> </td> <td id="sin_count_2"> 0 </td> </tr>
           <tr> <td> <button onclick="sin_clicked(3);" type="button" class="btn btn-primary"> Budeš ctít otce a matku! </button> </td> <td id="sin_count_3"> 0 </td> </tr>
           <tr> <td> <button onclick="sin_clicked(4);" type="button" class="btn btn-primary"> Nebudeš zabíjet! </button> </td> <td id="sin_count_4"> 0 </td> </tr>
