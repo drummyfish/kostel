@@ -1,0 +1,147 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.min.js"></script>
+    <link href="http://code.jquery.com/ui/1.9.0/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
+    <script src="js/bootstrap.min.js"></script>
+    <link href="css/keyboard.css" rel="stylesheet">
+    <script src="js/jquery.keyboard.js"></script>
+
+    <style>
+
+      .helper_table
+        {
+          padding: 10px;
+          border-spacing: 10px;
+          border-collapse: separate;
+        }
+
+      body
+        {
+          background-image: url("images/background.png");
+          background-size: cover;
+          font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+          padding: 20px;
+        }
+
+      .menu_item
+        {
+          background-color: rgba(100,100,100,0.5);
+          position: absolute;
+
+          width: 200px;
+          height: 40px;
+          text-align: center;
+          vertical-align:middle;
+          padding: 10px 10px;
+
+          font-size: 30px;
+        }
+
+      video#bgvid
+        {
+          position: fixed; right: 0; bottom: 0;
+          min-width: 100%; min-height: 100%;
+          width: auto; height: auto; z-index: -100;
+          background-size: cover;
+        }
+
+    </style>
+
+    <script>
+      var sin_count = [0,0,0,0,0,0,0,0,0,0];
+
+      function sin_clicked(number)
+        {
+          sin_count[number]++;
+
+          var element_name = "sin_count_" + number.toString();
+
+          var rect = document.getElementById(element_name).getBoundingClientRect();
+
+          document.getElementById(element_name).innerHTML = sin_count[number.toString()];
+
+          play_plus_animation(rect.left,rect.top);
+        }
+
+      function play_plus_animation(x,y)
+        {
+          document.getElementById("plus_image").style.top = x;
+        }
+    </script>
+
+    <script>
+        $(function(){
+            $('#keyboard').keyboard();
+        });
+    </script>
+
+  <body>
+    <video autoplay loop poster="images/background.png" id="bgvid">
+    <source src="images/background.webm" type="video/webm">
+    </video>
+
+    <h1> Zpovědnice </h1>
+
+    <table style="width: 100%;">
+      <tr>
+        <td>
+
+          <table class="helper_table" style="display: inline; background-color: rgba(100,100,100,0.5)">
+          <tr> <td> <button onclick="sin_clicked(0);" type="button" class="btn btn-primary"> Nebudeš mít jiné bohy! </button> </td> <td id="sin_count_0"> 0 </td> </tr>
+          <tr> <td> <button onclick="sin_clicked(1);" type="button" class="btn btn-primary"> Nebudeš zneužívat mého jména! </button> </td> <td id="sin_count_1"> 0 </td> </tr>
+          <tr> <td> <button onclick="sin_clicked(2);" type="button" class="btn btn-primary"> Budeš zachovávat den odpočinku! </button> </td> <td id="sin_count_2"> 0 </td> </tr>
+          <tr> <td> <button onclick="sin_clicked(3);" type="button" class="btn btn-primary"> Budeš ctít otce a matku! </button> </td> <td id="sin_count_3"> 0 </td> </tr>
+          <tr> <td> <button onclick="sin_clicked(4);" type="button" class="btn btn-primary"> Nebudeš zabíjet! </button> </td> <td id="sin_count_4"> 0 </td> </tr>
+          <tr> <td> <button onclick="sin_clicked(5);" type="button" class="btn btn-primary"> Nebudeš cizoložit! </button> </td> <td id="sin_count_5"> 0 </td> </tr>
+          <tr> <td> <button onclick="sin_clicked(6);" type="button" class="btn btn-primary"> Nebudeš krást! </button> </td> <td id="sin_count_6"> 0 </td> </tr>
+          <tr> <td> <button onclick="sin_clicked(7);" type="button" class="btn btn-primary"> Nebudeš lhát! </button> </td> <td id="sin_count_7"> 0 </td> </tr>
+          <tr> <td> <button onclick="sin_clicked(8);" type="button" class="btn btn-primary"> Nebudeš žádostivě dychtit po ženě svého bližního! </button> </td> <td id="sin_count_8"> 0 </td> </tr>
+          <tr> <td> <button onclick="sin_clicked(9);" type="button" class="btn btn-primary"> Nebudeš závistivý ani chamtivý! </button> </td> <td id="sin_count_9"> 0 </td> </tr>
+
+          <tr>
+            <td>
+              <form class="form-horizontal" role="form">
+              <input id="keyboard" class="form-control" type="text">
+              </form>
+            </td>
+          </tr>
+
+          <tr> <td> <button type="button" class="btn btn-primary"> vyzpovídat se </button> </td> <td> </td> </tr>
+    </table>
+
+        </td>
+
+        <td>
+          <p class="lead"> Které hříchy jsi porušil/a, synu/dcero? </p>
+          <img src="images/pope.png" style="" />
+        </td>
+
+        <td>
+          <p class="lead"> high score </p>
+
+    <table class="helper_table" style="background-color: rgba(100,100,100,0.5); width: 150px;">
+      <tr> <th> jméno </th> <th> skóre </th> </tr>
+      <tr> <td> asaJIsa </td> <td> 125 </td> </tr>
+      <tr> <td> asaJIsa </td> <td> 125 </td> </tr>
+      <tr> <td> asaJIsa </td> <td> 125 </td> </tr>
+      <tr> <td> asaJIsa </td> <td> 125 </td> </tr>
+      <tr> <td> asaJIsa </td> <td> 125 </td> </tr>
+      <tr> <td> asaJIsa </td> <td> 125 </td> </tr>
+    </table>
+        </td>
+      </tr>
+    </table>
+
+
+
+
+  </body>
+</html>
