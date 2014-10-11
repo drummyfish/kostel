@@ -17,6 +17,8 @@ hide_moles = function() {
         // vsechny schovane krtky resetovat
         if($("#hr"+i).attr("src") == "images/krtekhit_s.gif")
             $("#hr"+i).attr("src", "images/hrouda_s.png");
+        if($("#hr"+i).attr("src") == "images/krtekdown_s.gif")
+            $("#hr"+i).attr("src", "images/hrouda_s.png");
     }
     // predchoziho krtka schovat, pokud jeste neni
     if($("#hr"+krtek).attr("src") == "images/krtekup_s.gif")
@@ -29,7 +31,11 @@ hide_moles = function() {
 
 // vystrcit noveho krtecka
 show_mole = function() {
-    newkrtek = Math.round(Math.random()*9);
+    newkrtek = Math.round(Math.random()*8);
+    if(newkrtek == krtek) {
+        newkrtek = (krtek + 1) % 8;
+        console.log("override");
+    }
     $("#hr"+newkrtek).attr("src", "images/krtekup_s.gif");
 
     krtek = newkrtek;
