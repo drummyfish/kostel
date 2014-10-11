@@ -7,7 +7,11 @@
       {
         margin: 0;
         padding: 0;
+		
+
       }
+	  
+}  
   </style>
 
   <meta charset="utf-8">
@@ -57,14 +61,14 @@
       function handleTouch(event)
     {
       //event = event || window.event; // IE-ism
-      mouse_x = event.touches[0].pageX; - 100;
+      mouse_x = event.touches[0].pageX; + 30;
       mouse_y = event.touches[0].pageY; - 70;
     }
 
   function game_over()
     {
-      alert("Vedl sis dobře, synu, nahrál jsi skóre " + score + ".");
-      location.reload();
+      //alert("Vedl sis dobře, synu, nahrál jsi skóre " + score + ".");
+      //location.reload();
     }
 
   function init()
@@ -187,8 +191,14 @@
 </head>
 
 
+<style>    	
+	::-webkit-scrollbar {
+    width: 0px;
+    height: 10px;
+    }   
+</style>
 
-<body onload="init();">
+<body onload="init();" >
 
     <script language="javascript" type="text/javascript">
     document.oncontextmenu=RightMouseDown;
@@ -199,29 +209,24 @@
     function RightMouseDown() { return false;}
     </script>
 
-    <script>
-    /*
-    node.addEventListener('gestureend', function(e) {
-if (e.scale < 1.0) {
-// User moved fingers closer together
-} else if (e.scale > 1.0) {
-// User moved fingers further apart
-}
-}, false);
-*/
-
-    </script>
 
   <img id="player" src="images/jesus.gif" style="position: absolute; z-index: 20;" />
 
   <audio volume="0.2" id="audiotag1" src="images/explosion.wav" preload="auto"> </audio>
 
-  <a href="kostel.html"></a><button type="button" class="btn btn-primary" style="width: 10%; z-index: 50; position: absolute; right: 20px; bottom: 20px;"> zpět </button></a>
+  <button id="btn_back" onclick="return btnback_onclick()" type="button" class="btn btn-primary" style="width: 10%; z-index: 50; position: absolute; right: 20px; bottom: 20px;"> zpět </button>
+  
+	<script>
+	function btnback_onclick() 
+	{
+		window.location.href = "./kostel.html";
+	}
+	</script>
 
-  <div style="z-index: 50; font-size: 30px; position: absolute; right: 50%; bottom: 20px; color: red;"> skóre: <span id="score_span"> 0 </span> </div>
+  <div  style="z-index: 50; font-size: 30px; position: absolute; right: 50%; bottom: 20px; color: red;"> skóre: <span id="score_span"> 0 </span> </div>
 
-  <div id="bg_layer2" style="z-index: 5; position: absolute; min-width: 100%; min-height: 100%; background: url(images/game_back2.png) repeat 0px"></div>
-  <div id="bg_layer1" style="position: absolute; min-width: 100%; min-height: 100%; background: url(images/game_back.png) repeat 0px"></div>
+  <div  id="bg_layer2" style="z-index: 5; position: absolute; min-width: 100%; min-height: 100%; background: url(images/game_back2.png) repeat 0px"></div>
+  <div  id="bg_layer1" style="position: absolute; min-width: 100%; min-height: 100%; background: url(images/game_back.png) repeat 0px"></div>
 
 </body>
 
