@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>
 
@@ -8,12 +9,66 @@ $(document).mousemove(function(e){
     $("#hammer").css({left:e.pageX-100, top:e.pageY-190, display:'block'});
 });
 
-$("img").attr("src", "images/krtekup.gif");
+var krtek;
+setInterval(function() {
+    for(i = 1; i <= 10; ++i) {
+        // vsechny schovane krtky resetovat
+        if($("#hr"+i).attr("src") == "images/krtekdown_s.gif")
+            $("#hr"+i).attr("src", "images/hrouda_s.png");
+    }
+    // predchoziho krtka schovat, pokud jeste neni
+    if($("#hr"+krtek).attr("src") == "images/krtekup_s.gif")
+        $("#hr"+krtek).attr("src", "images/krtekdown_s.gif");
+
+    newkrtek = Math.round(Math.random()*9);
+    $("#hr"+newkrtek).attr("src", "images/krtekup_s.gif");
+
+    /*
+    schovane krtky nahradit hroudou
+    schovat predchozi krtky
+    vytahnout jednoho noveho krtka
+    */
+    krtek = newkrtek;
+}, 1000);
+
+$(document).click(function(e) {
+
+    //$("#hammer").attr("src", "images/hammer.gif");
+    $("#hammer").css('background-image', 'url("images/hammer.gif?'+Math.random()+'")');
+
+    startpos = $("#hr1").position();
+
+    x = Math.floor(e.pageX - startpos.left);
+    y = Math.floor(e.pageY - startpos.top);
+
+    col = Math.floor(x / 230);
+    x_off = x % 230;
+    row = Math.floor(y / 230);
+    y_off = y % 230;
+
+    //console.log("row: " + row + " col: " + col + " xoff: " + x_off + " yoff:" + y_off);
+
+    // hit obrazku
+    if(row >= 0 && row <= 2 && col >= 0 && col <= 2) {
+        // hit oblasti krtka
+        if(x_off >= 70 && x_off <= 160 && y_off >= 85 && y_off <= 150) {
+            hrouda = "#hr"+(row*3+col+1);
+            console.log("hit " + hrouda);
+
+            console.log($(hrouda).attr("src"));
+            // hit krtka
+            if($(hrouda).attr("src") == "images/krtekup_s.gif") {
+                $(hrouda).attr("src", "images/krtekdown_s.gif");
+            }
+        }
+    }
+
+});
 
 </script>
 <style>
 body {
-    cursor: none;
+    /*cursor: none;*/
     overflow: hidden;
     background-image: url('images/grass.jpg');
     margin: auto;
@@ -21,36 +76,45 @@ body {
 #hammer {
     position:absolute;
     /*display:none;*/
+    width: 402px;
+    height: 398px;
+    background-image: url('images/hammer.png');
 }
 </style>
 </head>
 <body>
 
 
+<div style="width:800px; margin:auto;">
+
+<h1>Zaražte zpět do pekla pekelného krtka!</h1>
+
 <table>
+    <tr>
+    <!--
+    <td><img src="images/krtekup_s.gif" id="hr1">
+    <td><img src="images/krtekdown_s.gif" id="hr2">
+    -->
+    <td><img src="images/hrouda_s.png" id="hr1">
+    <td><img src="images/hrouda_s.png" id="hr2">
+    <td><img src="images/hrouda_s.png" id="hr3">
+    <tr>
+    <td><img src="images/hrouda_s.png" id="hr4">
+    <td><img src="images/hrouda_s.png" id="hr5">
+    <td><img src="images/hrouda_s.png" id="hr6">
+    <tr>
+    <td><img src="images/hrouda_s.png" id="hr7">
+    <td><img src="images/hrouda_s.png" id="hr8">
+    <td><img src="images/hrouda_s.png" id="hr9">
+    </table>
+</div>
 
-<tr>
-<td><img src="images/hrouda.png">
-<td><img src="images/hrouda.png">
-<td><img src="images/hrouda.png">
-<tr>
-<td><img src="images/hrouda.png">
-<td><img src="images/hrouda.png">
-<td><img src="images/hrouda.png">
-<tr>
-<td><img src="images/hrouda.png">
-<td><img src="images/hrouda.png">
-<td><img src="images/hrouda.png">
-</table>
+<div id="hammer">
+</div>
 
+<!--
 <img src="images/hammer.png" id="hammer" >
-
-<script>
-$("img").click(function() {
-    $("#hammer").attr("src", "images/hammer.gif");
-    $(this).attr("src", "images/hrouda.png");
-});
-</script>
+-->
 
 </body>
 </html>
