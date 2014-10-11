@@ -8,7 +8,7 @@
 <script>
 
 $(document).mousemove(function(e){
-    $("#hammer").css({left:e.pageX-100, top:e.pageY-190, display:'block'});
+    $("#hammer").css({left:e.pageX-100, top:e.pageY-190});
 });
 
 var krtek;
@@ -51,7 +51,13 @@ setTimeout(show_mole, Math.floor(200 + Math.random() * 200));
 $(document).click(function(e) {
 
     // bouchnuti kladivem
-    $("#hammer").css('background-image', 'url("images/hammer.gif?'+Math.random()+'")');
+/*
+    $("#hammer").css('background-image', 'url("images/hammer.png")');
+    setTimeout(function() {
+        $("#hammer").css('background-image', 'url("images/hammer.gif")');
+    }, 1000);
+*/
+    $("#hammer").attr("src", "images/hammer.gif");
 
     startpos = $("#hr1").position();
 
@@ -102,7 +108,7 @@ body {
     /*display:none;*/
     width: 402px;
     height: 398px;
-    background-image: url('images/hammer.png');
+    /*background-image: url('images/hammer.png');*/
 }
 h1 {
     text-align: center;
@@ -164,7 +170,9 @@ h1 {
 
 </div>
 
-<div id="hammer"></div>
+<!--div id="hammer"></div-->
+<img src="images/hammer.png" id="hammer">
+
 
   <button id="btn_back" onclick="return btnback_onclick()" type="button" class="btn btn-primary" style="width: 10%; z-index: 50; position: absolute; right: 20px; bottom: 20px;"> zpět </button>
   
