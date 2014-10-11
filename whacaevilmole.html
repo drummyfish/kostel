@@ -107,10 +107,30 @@ h1 {
 .whack-container {
     width: 920px;
     margin:auto;
+	
+	::-webkit-scrollbar {
+    width: 0px;
+    height: 10px;
+    }	
 }
+
 </style>
+    	
+
 </head>
 <body>
+
+	<script language="javascript" type="text/javascript">
+	document.oncontextmenu=RightMouseDown;
+	document.onmousedown = mouseDown; 
+
+	function mouseDown(e) {
+      if (e.which==3) {//righClick
+      //alert("Disabled - do whatever you like here..");
+	}	
+	}
+	function RightMouseDown() { return false;}
+	</script>
 
 <h1>Zaražte zpět do pekla pekelného krtka!</h1>
 
@@ -130,7 +150,7 @@ h1 {
     </table>
 
     <span class="scorebox">Score:
-    <span id="score">0</span>
+    <span id="score" >0</span>
     </span>
 
 </div>
