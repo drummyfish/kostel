@@ -61,8 +61,9 @@
       function handleTouch(event)
     {
       //event = event || window.event; // IE-ism
-      mouse_x = event.touches[0].pageX; + 30;
-      mouse_y = event.touches[0].pageY; - 70;
+      mouse_x = event.touches[0].pageX - 100;
+      mouse_y = event.touches[0].pageY - 70;
+	  console.log('x=' +  mouse_x + ' y=mouse_y' + mouse_y);
     }
 
   function game_over()
