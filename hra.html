@@ -11,8 +11,17 @@
   </style>
 
   <meta charset="utf-8">
+  <!-- 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.min.js"></script>
+  -->
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+  
+  
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <script src="js/bootstrap.min.js"></script>
 
@@ -35,16 +44,30 @@
 
   function handleMouseMove(event)
     {
-      //event = event || window.event; // IE-ism
-
+      //event = event || window.event; // IE-ism	  
       mouse_x = event.clientX - 100;
       mouse_y = event.clientY - 70;
+	  
+	  //console.log('x=' +  mouse_x + ' y=mouse_y' + mouse_y);
+    }
+	
+	  function handleTouch(event)
+    {
+      //event = event || window.event; // IE-ism	  
+      mouse_x = event.touches[0].pageX; - 100;
+	  mouse_y = event.touches[0].pageY; - 70;
+	  
+	  console.log('x=' +  mouse_x + ' y=' + mouse_y);
     }
 
+	
+	
   function init()
     {
       setInterval(function(){frame()}, 20);
-      window.onmousemove = handleMouseMove;
+      //window.onmousemove = handleMouseMove;							!!
+	  window.ontouchmove = handleTouch;
+	  window.onmousemove = handleMouseMove;
       setTimeout(create_enemy,2000);
     }
 
@@ -141,6 +164,28 @@
 
 
 <body onload="init();">
+
+	<script language="javascript" type="text/javascript">
+	document.oncontextmenu=RightMouseDown;
+	document.onmousedown = mouseDown; 
+
+	function mouseDown(e) {
+	}
+	function RightMouseDown() { return false;}
+	</script>
+	
+	<script>
+	/*
+	node.addEventListener('gestureend', function(e) {
+if (e.scale < 1.0) {
+// User moved fingers closer together
+} else if (e.scale > 1.0) {
+// User moved fingers further apart
+}
+}, false);
+*/
+	
+	</script>
 
   <img id="player" src="images/jesus.gif" style="position: absolute; z-index: 20;" />
 
