@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+
+$(document).mousemove(function(e){
+    $("#hammer").css({left:e.pageX-100, top:e.pageY-190, display:'block'});
+});
+
+$("img").attr("src", "images/krtekup.gif");
+
+</script>
+<style>
+body {
+    cursor: none;
+    overflow: hidden;
+    background-image: url('images/grass.jpg');
+    margin: auto;
+}
+#hammer {
+    position:absolute;
+    /*display:none;*/
+}
+</style>
+</head>
+<body>
+
+
+<table>
+
+<tr>
+<td><img src="images/hrouda.png">
+<td><img src="images/hrouda.png">
+<td><img src="images/hrouda.png">
+<tr>
+<td><img src="images/hrouda.png">
+<td><img src="images/hrouda.png">
+<td><img src="images/hrouda.png">
+<tr>
+<td><img src="images/hrouda.png">
+<td><img src="images/hrouda.png">
+<td><img src="images/hrouda.png">
+</table>
+
+<img src="images/hammer.png" id="hammer" >
+
+<script>
+$("img").click(function() {
+    $("#hammer").attr("src", "images/hammer.gif");
+    $(this).attr("src", "images/hrouda.png");
+});
+</script>
+
+</body>
+</html>
