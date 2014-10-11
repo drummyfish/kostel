@@ -57,7 +57,7 @@
       mouse_x = event.touches[0].pageX; - 100;
 	  mouse_y = event.touches[0].pageY; - 70;
 	  
-	  console.log('x=' +  mouse_x + ' y=' + mouse_y);
+	  //console.log('x=' +  mouse_x + ' y=' + mouse_y);
     }
 
 	
@@ -104,7 +104,8 @@
 
           if (enemies_positions[i] > $(window).width() - 200)
             {
-              enemies[i].remove();
+              enemies[i].parentNode.removeChild(enemies[i]);
+			  enemies[i].remove();			  
               enemies[i] = null;
               continue;
             }
